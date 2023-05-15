@@ -1,0 +1,1 @@
+/usr/bin/c++ "CMakeFiles/lands-of-xim.dir/src/main.cpp.o" -o lands-of-xim  /usr/lib/libSDL2-2.0.so.0.2600.5 

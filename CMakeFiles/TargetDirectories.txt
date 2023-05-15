@@ -1,0 +1,4 @@
+/home/anon/projects/lands-of-xim/CMakeFiles/clang-tidy.dir
+/home/anon/projects/lands-of-xim/CMakeFiles/lands-of-xim.dir
+/home/anon/projects/lands-of-xim/CMakeFiles/edit_cache.dir
+/home/anon/projects/lands-of-xim/CMakeFiles/rebuild_cache.dir

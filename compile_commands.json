@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/anon/projects/lands-of-xim",
+  "command": "/usr/bin/c++  -isystem /usr/include/SDL2 -save-temps -o CMakeFiles/lands-of-xim.dir/src/main.cpp.o -c /home/anon/projects/lands-of-xim/src/main.cpp",
+  "file": "/home/anon/projects/lands-of-xim/src/main.cpp",
+  "output": "CMakeFiles/lands-of-xim.dir/src/main.cpp.o"
+}
+]
