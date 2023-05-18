@@ -63532,64 +63532,49 @@ extern __attribute__ ((visibility("default"))) int TTF_SetFontScriptName(TTF_Fon
 # 1 "/usr/include/SDL2/close_code.h" 1 3 4
 # 2313 "/usr/include/SDL2/SDL_ttf.h" 2 3 4
 # 4 "/home/anon/projects/lands-of-xim/src/main.cpp" 2
+# 1 "/usr/include/SDL2/SDL_video.h" 1 3 4
+# 5 "/home/anon/projects/lands-of-xim/src/main.cpp" 2
 
 
-# 5 "/home/anon/projects/lands-of-xim/src/main.cpp"
+# 6 "/home/anon/projects/lands-of-xim/src/main.cpp"
 int main(int argc, char* argv[])
 {
 
     SDL_Init(
-# 8 "/home/anon/projects/lands-of-xim/src/main.cpp" 3 4
+# 9 "/home/anon/projects/lands-of-xim/src/main.cpp" 3 4
             0x00000020u
-# 8 "/home/anon/projects/lands-of-xim/src/main.cpp"
+# 9 "/home/anon/projects/lands-of-xim/src/main.cpp"
                           );
 
 
-    SDL_Window* window = SDL_CreateWindow("My Window", 
-# 11 "/home/anon/projects/lands-of-xim/src/main.cpp" 3 4
-                                                      (0x1FFF0000u|(0))
-# 11 "/home/anon/projects/lands-of-xim/src/main.cpp"
-                                                                             , 
-# 11 "/home/anon/projects/lands-of-xim/src/main.cpp" 3 4
-                                                                               (0x1FFF0000u|(0))
-# 11 "/home/anon/projects/lands-of-xim/src/main.cpp"
-                                                                                                      ,
-                                           0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP);
+    SDL_Window* window = SDL_CreateWindow("Lands of Xim", 
+# 12 "/home/anon/projects/lands-of-xim/src/main.cpp" 3 4
+                                                         (0x1FFF0000u|(0))
+# 12 "/home/anon/projects/lands-of-xim/src/main.cpp"
+                                                                                , 
+# 12 "/home/anon/projects/lands-of-xim/src/main.cpp" 3 4
+                                                                                  (0x1FFF0000u|(0))
+# 12 "/home/anon/projects/lands-of-xim/src/main.cpp"
+                                                                                                         ,
+        0, 0, SDL_WINDOW_FULLSCREEN);
 
 
     int window_width;
     int window_height;
     SDL_GetWindowSize(window, &window_width, &window_height);
-    SDL_Rect top_left_window = {0, 0, window_width * 2/3, window_height};
-    SDL_Rect sidebar = {window_width * 2/3, 0, window_width/3, window_height};
+    SDL_Rect top_left_window = { 0, 0, window_width * 2 / 3, window_height };
+    SDL_Rect sidebar = { window_width * 2 / 3, 0, window_width / 3, window_height };
 
 
     SDL_Renderer* top_left_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_Renderer* side_bar_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 
-    SDL_SetRenderDrawColor(top_left_renderer, 0, 0, 0, 255);
-    SDL_RenderClear(top_left_renderer);
-    SDL_SetRenderDrawColor(side_bar_renderer, 255, 255, 255, 255);
-    SDL_RenderClear(side_bar_renderer);
-
-
-    SDL_SetRenderDrawColor(top_left_renderer, 255, 255, 0, 255);
-    SDL_RenderFillRect(top_left_renderer, &top_left_window);
-
-
-    SDL_SetRenderDrawColor(side_bar_renderer, 0, 0, 255, 255);
-    SDL_RenderFillRect(side_bar_renderer, &sidebar);
-
-
-    SDL_RenderPresent(top_left_renderer);
-    SDL_RenderPresent(side_bar_renderer);
-
-
     bool quit = false;
     SDL_Event event;
     while (!quit)
     {
+
         while (SDL_PollEvent(&event) != 0)
         {
             if (event.type == SDL_QUIT
@@ -63598,6 +63583,22 @@ int main(int argc, char* argv[])
                 quit = true;
             }
         }
+
+
+        SDL_SetRenderDrawColor(top_left_renderer, 0, 0, 0, 255);
+        SDL_RenderClear(top_left_renderer);
+        SDL_SetRenderDrawColor(top_left_renderer, 255, 255, 0, 255);
+        SDL_RenderFillRect(top_left_renderer, &top_left_window);
+
+
+        SDL_SetRenderDrawColor(side_bar_renderer, 0, 0, 0, 255);
+        SDL_RenderClear(side_bar_renderer);
+        SDL_SetRenderDrawColor(side_bar_renderer, 0, 0, 255, 255);
+        SDL_RenderFillRect(side_bar_renderer, &sidebar);
+
+
+        SDL_RenderPresent(top_left_renderer);
+        SDL_RenderPresent(side_bar_renderer);
     }
 
 

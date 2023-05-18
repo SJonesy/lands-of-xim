@@ -4,7 +4,7 @@
 	.section	.rodata
 	.align	3
 .LC0:
-	.string	"My Window"
+	.string	"Lands of Xim"
 	.text
 	.align	2
 	.global	main
@@ -26,7 +26,7 @@ main:
 	mov	x1, 0
 	mov	w0, 32
 	bl	SDL_Init
-	mov	w5, 4097
+	mov	w5, 1
 	mov	w4, 0
 	mov	w3, 0
 	mov	w2, 536805376
@@ -83,46 +83,6 @@ main:
 	ldr	x0, [sp, 56]
 	bl	SDL_CreateRenderer
 	str	x0, [sp, 72]
-	mov	w4, -1
-	mov	w3, 0
-	mov	w2, 0
-	mov	w1, 0
-	ldr	x0, [sp, 64]
-	bl	SDL_SetRenderDrawColor
-	ldr	x0, [sp, 64]
-	bl	SDL_RenderClear
-	mov	w4, -1
-	mov	w3, -1
-	mov	w2, -1
-	mov	w1, -1
-	ldr	x0, [sp, 72]
-	bl	SDL_SetRenderDrawColor
-	ldr	x0, [sp, 72]
-	bl	SDL_RenderClear
-	mov	w4, -1
-	mov	w3, 0
-	mov	w2, -1
-	mov	w1, -1
-	ldr	x0, [sp, 64]
-	bl	SDL_SetRenderDrawColor
-	add	x0, sp, 80
-	mov	x1, x0
-	ldr	x0, [sp, 64]
-	bl	SDL_RenderFillRect
-	mov	w4, -1
-	mov	w3, -1
-	mov	w2, 0
-	mov	w1, 0
-	ldr	x0, [sp, 72]
-	bl	SDL_SetRenderDrawColor
-	add	x0, sp, 96
-	mov	x1, x0
-	ldr	x0, [sp, 72]
-	bl	SDL_RenderFillRect
-	ldr	x0, [sp, 64]
-	bl	SDL_RenderPresent
-	ldr	x0, [sp, 72]
-	bl	SDL_RenderPresent
 	strb	wzr, [sp, 47]
 	b	.L2
 .L5:
@@ -146,6 +106,46 @@ main:
 	and	w0, w0, 255
 	cmp	w0, 0
 	bne	.L5
+	mov	w4, -1
+	mov	w3, 0
+	mov	w2, 0
+	mov	w1, 0
+	ldr	x0, [sp, 64]
+	bl	SDL_SetRenderDrawColor
+	ldr	x0, [sp, 64]
+	bl	SDL_RenderClear
+	mov	w4, -1
+	mov	w3, 0
+	mov	w2, -1
+	mov	w1, -1
+	ldr	x0, [sp, 64]
+	bl	SDL_SetRenderDrawColor
+	add	x0, sp, 80
+	mov	x1, x0
+	ldr	x0, [sp, 64]
+	bl	SDL_RenderFillRect
+	mov	w4, -1
+	mov	w3, 0
+	mov	w2, 0
+	mov	w1, 0
+	ldr	x0, [sp, 72]
+	bl	SDL_SetRenderDrawColor
+	ldr	x0, [sp, 72]
+	bl	SDL_RenderClear
+	mov	w4, -1
+	mov	w3, -1
+	mov	w2, 0
+	mov	w1, 0
+	ldr	x0, [sp, 72]
+	bl	SDL_SetRenderDrawColor
+	add	x0, sp, 96
+	mov	x1, x0
+	ldr	x0, [sp, 72]
+	bl	SDL_RenderFillRect
+	ldr	x0, [sp, 64]
+	bl	SDL_RenderPresent
+	ldr	x0, [sp, 72]
+	bl	SDL_RenderPresent
 .L2:
 	ldrb	w0, [sp, 47]
 	eor	w0, w0, 1
