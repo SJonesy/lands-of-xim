@@ -12,19 +12,31 @@ int main(int argc, char* argv[])
     // Create the main window
     SDL_Window* window = SDL_CreateWindow("Lands of Xim", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP);
-
-    // Calculate the areas for the top-left window and sidebar
     int window_width;
     int window_height;
     SDL_GetWindowSize(window, &window_width, &window_height);
+
+    // Create main (center) window renderer
     SDL_Rect main_window;  
     main_window.x = (window_width - window_height) / 2;
     main_window.y = 0;
     main_window.h = window_height;
     main_window.w = window_height; // intentional, we're drawing a square
-    
-    // Create renderers for each area
     SDL_Renderer* main_window_renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    // Create left panel renderer
+    SDL_Rect left_panel;
+    left_panel.x = 0;
+    left_panel.y = 0;
+    left_panel.w = (window_width - window_height) / 2;
+    left_panel.h = window_height;
+
+    // Create right panel renderer
+    SDL_Rect right_panel;
+    right_panel.x = main_window.x + main_window.w;
+    right_panel.y = 0;
+    right_panel.w = (window_width - window_height) / 2;
+    right_panel.h = window_height;
 
 /*  TODO: figure out drawing text
     TTF_Font* Sans = TTF_OpenFont("Sans.ttf", 24);
