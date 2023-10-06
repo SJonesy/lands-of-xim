@@ -63,8 +63,11 @@ int main(int argc, char* argv[])
         // Render to main window
         SDL_SetRenderDrawColor(main_window_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(main_window_renderer);
-        SDL_SetRenderDrawColor(main_window_renderer, 255, 255, 0, 255);
+        SDL_SetRenderDrawColor(main_window_renderer, 64, 128, 128, 255);
         SDL_RenderFillRect(main_window_renderer, &main_window);
+        SDL_SetRenderDrawColor(main_window_renderer, 64, 64, 128, 255);
+        SDL_RenderFillRect(main_window_renderer, &left_panel);
+        SDL_RenderFillRect(main_window_renderer, &right_panel);
 
         // Present the renderers to the window
         SDL_RenderPresent(main_window_renderer);
